@@ -83,4 +83,54 @@ def five():
                 max_num = matrix[j]
                 max_j = j
                 max_i = i
+
     print(max_i, max_j)
+# Фигуры
+def print_figure(matrix):
+    for i in matrix:
+        print(' '.join(i))
+    print()
+
+def square(size):
+    return [['#' for _ in range(size)] for _ in range(size)]
+
+def triangle(size):
+    matrix = []
+    for i in range(size):
+        qq = ['#'] * (i + 1) + [' '] * (size - i - 1)
+        matrix.append(qq)
+    return matrix
+
+def circle(size):
+    matrix = []
+    radius = size // 2
+    for i in range(size):
+        ff = []
+        for j in range(size):
+            distance = ((i - radius) ** 2 + (j - radius) ** 2) ** 0.5
+            if distance <= radius:
+                ff.append('#')
+            else:
+                ff.append(' ')
+        matrix.append(ff)
+    return matrix
+
+print("ВЫБЕРИТЕ ФИГУРУ:")
+print("1 - Квадрат")
+print("2 - Треугольник") 
+print("3 - Круг")
+
+figure = input("Выбор (1-3): ")
+size = int(input("Размер фигуры: "))
+
+if figure == '1':
+    print("Квадрат:")
+    print_figure(square(size))
+elif figure == '2':
+    print("Треугольник:")
+    print_figure(triangle(size))
+elif figure == '3':
+    print("Круг:")
+    print_figure(circle(size))
+else:
+    print("Неверный ввод!")
