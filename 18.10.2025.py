@@ -35,21 +35,27 @@ matrix = [['≈']*N for i in range(M)]
 result += qq
 
 for i in range(qq):
-    f = random.randint(0, M-1)
-    g = random.randint(0, N-1)
+    f = random.randint(1, M-2)
+    g = random.randint(1, N-2)
     matrix[f][g] = '▩'
     for j, d in [(0,1) , (1,0), (0,-1), (-1,0)]:
         if random.random() < 0.4:
             ff = f + j
             jh = d + g
-            if 0 <= ff < M and 0 <= jh < N:
+            if 1 <= ff < M-1 and 1 <= jh < N-1:
                 matrix[ff][jh] = '▩'
-www = random.randint(0, len(matrix))
-matrix[www][www] = '⨉'
-
+www = random.randint(0, len(matrix)-1)
 print("Карта:")
 for i in matrix:
     print(' '.join(i))
 
 print()
 print(f"Кол-во островов: {result}")
+if matrix[www][www] == '▩':
+    matrix[www][www] = '⨉'
+    print("Вам повезло! Клад находится на острове")
+
+else:
+    print("Клад уплыл, вам не повезло(")
+time.sleep(3600)
+print('Вы получили достижение: "Отойдука за чайком..."')
