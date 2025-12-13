@@ -69,10 +69,11 @@ def sixth():
     my_list = [random.randint(-100, 100) for i in range(20)]
     print(my_list)
     for i in range(len(my_list)):
-        condition1 = abs(my_list[i-1] + my_list[i]) > 14
-        condition2 = abs(my_list[i-1] / my_list[i]) > 1
-        if condition1 and condition2:
-            n += 1
+        if my_list[i] != 0:
+            condition1 = abs(my_list[i-1] + my_list[i]) > 14
+            condition2 = abs(my_list[i-1] / my_list[i]) > 1
+            if condition1 and condition2:
+                n += 1
     print(f"Количество пар, выполняющие условия задачи: {n}")
     clear()
 
@@ -98,4 +99,5 @@ def home():
 
 home()
 end = time.perf_counter()
+
 print(f"Время выполнения: {end - start:0.6f} секунд")
