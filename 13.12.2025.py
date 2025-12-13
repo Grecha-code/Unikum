@@ -3,7 +3,10 @@ import time
 
 start = time.perf_counter()
 def clear():
-    input("Нажмите Enter чтобы продолжить")
+    qq = input("Нажмите Enter чтобы продолжить, введите 1 чтобы завершить проверку")
+    if qq == "1":
+        print(f"Время выполнения: {end - start:0.6f} секунд")
+        exit()
     for i in range(100):
         print()
     home()
@@ -96,8 +99,5 @@ def home():
         sixth()
     else:
         print("Такой задачи нет!")
-
-home()
 end = time.perf_counter()
-
-print(f"Время выполнения: {end - start:0.6f} секунд")
+home()
