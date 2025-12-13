@@ -2,7 +2,7 @@ import random
 import time
 
 start = time.perf_counter()
-def clear():
+def clear(): # Нужно для промота страницы
     qq = input("Нажмите Enter чтобы продолжить, введите 1 чтобы завершить проверку")
     if qq == "1":
         print(f"Время выполнения: {end - start:0.6f} секунд")
@@ -12,10 +12,12 @@ def clear():
     home()
 
 
-def first():
+def first(): # Задача 1
+    # Генерация списка
     n = 0
     my_list = [random.randint(-100, 100) for i in range(20)]
     print(my_list)
+    # Вычисление результата
     for i in range(len(my_list)):
         if my_list[i-1] + my_list[i] >= 0:
             n += 1
@@ -23,10 +25,12 @@ def first():
     clear()
 
 
-def second():
+def second(): # Задача 2
+    # Генерация списка
     max_nums = 0
     my_list = [random.randint(-100, 100) for i in range(20)]
     print(my_list)
+    # Вычисление результата
     for i in range(len(my_list)):
         if my_list[i - 1] + my_list[i] >= max_nums:
             max_nums = my_list[i - 1] + my_list[i]
@@ -34,10 +38,12 @@ def second():
     clear()
 
 
-def third():
+def third(): # Задача 3
+    # Генерация списка
     n = []
     my_list = [random.randint(-100, 100) for i in range(20)]
     print(my_list)
+    # Вычисление результата
     for i in range(len(my_list)):
         if my_list[i-1] < my_list[i] >= 0:
             n.append([my_list[i-1], my_list[i]])
@@ -45,10 +51,12 @@ def third():
     clear()
 
 
-def fourth():
+def fourth(): # Задача 4
+    # Генерация списка
     n = 0
     my_list = [random.randint(0, 1000) for i in range(20)]
     print(my_list)
+    # Вычисление результата
     for i in range(len(my_list)):
         if my_list[i-1] % 2 == 0 and my_list[i] % 2 == 0 and my_list[i+1] % 2 == 0:
             n += 1
@@ -56,10 +64,12 @@ def fourth():
     clear()
 
 
-def fifth():
+def fifth(): # Задача 5
+    # Генерация списка
     n = 0
     my_list = [random.randint(-100, 100) for i in range(20)]
     print(my_list)
+    # Вычисление результата
     for i in range(len(my_list)):
         if my_list[i-1] + my_list[i] >= 0 and my_list[i-1] + my_list[i] % 7 == 2:
             n += 1
@@ -67,10 +77,12 @@ def fifth():
     clear()
 
 
-def sixth():
+def sixth(): # Задача 6
+    # Генерация списка
     n = 0
     my_list = [random.randint(-100, 100) for i in range(20)]
     print(my_list)
+    # Вычисление результата
     for i in range(len(my_list)):
         if my_list[i] != 0:
             condition1 = abs(my_list[i-1] + my_list[i]) > 14
@@ -81,10 +93,11 @@ def sixth():
     clear()
 
 
-def home():
+def home(): # Главная страница
     print("Пашков Алексей, задания на 13.12.2025")
     print("Введите номер проверяемой задачи: ")
     task = int(input())
+    # Выбор задачи
     if task == 1:
         first()
     elif task == 2:
@@ -101,3 +114,4 @@ def home():
         print("Такой задачи нет!")
 end = time.perf_counter()
 home()
+
