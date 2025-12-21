@@ -4,11 +4,12 @@ import time
 def create_hanoi(n, start, end, spare):
     global towers, moves
     moves = 0
-    towers = {
+    qq = {
         start: list(range(n, 0, -1)),
         spare: [],
         end: []
     }
+    towers = dict(sorted(qq.items()))
 
     def print_towers(towers):
         for i, j in towers.items():
