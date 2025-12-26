@@ -13,9 +13,7 @@ def sort_list(array): # Сортировка длz заданий 1 и 2
         for j in range(0, len(array) - i - 1):
             if array[j] > array[j + 1]:
                 array[j], array[j + 1] = array[j + 1], array[j]
-
-result = list_for_sort
-
+                
 
 def first(array): # Задание 1
     array.remove(array[-1])
@@ -46,5 +44,6 @@ def home():  # Главная страница
     input("Нажмите Enter для продолжения")
     print("Задание 3:")
     third(qq)
+
 
 home()
