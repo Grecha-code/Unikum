@@ -1,49 +1,56 @@
-import time
-print("Вариант B")
+import hashlib
 
-def first():
-  print(f'1) 1000 бит = {1000/8} байт, {1000/8/1024} кб, {1000/8/1024/1024} мб, ')
-  print(f'{1000/8/1024/1024/1024} гб, {1000/8/1024/1024/1024/1024} тб')
 
-def second():
-  print("2) 1 символ = 6 бит")
-  print(60*1000*2*6, "бит")
+def hashing(text):
+    full_hash = hashlib.sha256(text.encode('utf-8')).hexdigest()
+    result = full_hash[0:16]
 
-def third():
-  year_time = input('3) Какое сейчас время года?')
-  if year_time == 'Лето':
-    print("Какая сейчас погода?")
-    a = int(input())
-    if a >= 15:
-      print("Футболка")
-    else:
-      print("Кофта")
-  elif year_time == 'Осень':
-    print("Какая сейчас погода?")
-    a = int(input())
-    if a >= 10:
-      print("Кофта")
-    else:
-      print("Ветровка")
-  elif year_time == 'Зима':
-    print("Какая сейчас погода?")
-    a = int(input())
-    if a >= -5:
-      print("Легкая куртка")
-    else:
-      print("Теплая куртка")
-  elif year_time == 'Весна':
-    print("Какая сейчас погода?")
-    a = int(input())
-    if a >= 7:
-      print("Кофта")
-    else:
-      print("Ветровка/Легкая куртка")
-  else:
-    print("Такого времени года нету!")
+    return result
 
-first()
-time.sleep(5)
-second()
-time.sleep(5)
-third()
+
+def crypted(text):
+    all_chars = [chr(i) for i in range(65536)]
+    key = (691, 779)
+    code = []
+    for i in text:
+        code.append(all_chars.index(i) ** key[0] % key[1])
+    return code
+
+
+def encrypted(code):
+    key2 = (571, 779)
+    all_chars = [chr(i) for i in range(65536)]
+    decode = ""
+    for sim in code:
+        decode += all_chars[(sim ** key2[0] % key2[1])]
+    return decode
+
+
+def home():
+    print("Вариант B. Пашков Алексей ИИ-71")
+    print("Главное меню\n1) Создать подпись\n2) Проверить подпись(окончательно подписать документ)")
+    choice = int(input())
+
+    if choice == 1:
+        signature = input("Введите подпись: ")
+        encrypted_signature = crypted(hashing(signature))
+        with open('file.txt', 'w', encoding='utf-8') as file:
+            file.write(str(encrypted_signature))
+        print("Подпись создана и сохранена в file.txt")
+
+    elif choice == 2:
+        signature = input("Введите подпись из документа: ")
+        new_encrypted_signature = crypted(hashing(signature))
+        with open('file.txt', 'r', encoding='utf-8') as file:
+            saved_signature = file.read()
+        saved_signature_list = eval(saved_signature)
+        if new_encrypted_signature == saved_signature_list:
+            print("Подпись подтверждена!")
+        else:
+            print("Подписи не совпадают")
+
+    else:
+        print("Пожалуйста, введите другое число")
+
+if __name__ == "__main__":
+    home()
