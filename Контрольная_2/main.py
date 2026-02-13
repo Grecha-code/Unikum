@@ -3,6 +3,7 @@ import time
 
 
 def first(list_for_sort):
+    print("\nЗадание 1")
     n = len(list_for_sort)
     # Цикл для прохода по списку
     for i in range(n):
@@ -20,6 +21,7 @@ def first(list_for_sort):
 
 
 def second(N, M, move):
+    print("\nЗадание 2")
     matrix = []
 
     # Цикл для добавления элементов (0, 1, 2...)
@@ -39,6 +41,7 @@ def second(N, M, move):
 
 
 def third(N, M):
+    print("\nЗадание 3")
     matrix = []
 
     # Цикл для добавления рандомных элементов
@@ -52,6 +55,7 @@ def third(N, M):
 
 
 def fourth():
+    print("\nЗадание 4")
     data = [random.randint(1, 100) for i in range(10)]
     data2 = data.copy()
 
@@ -99,19 +103,19 @@ if __name__ == "__main__":
             break
 
         elif choice == 1:
-            first([92, 5, 12, 3, 14, 16, 121])
+            print(first([92, 5, 12, 3, 14, 16, 121]))
             print("Метод sort() является более быстрым, т.к.\n"
                   "является гибридным алгоритмом, который\n"
                   "во всех случаях имеет сложность O(n log n)")
 
         elif choice == 2:
-            second(10, 10, 3)
+            print(second(10, 10, 3))
 
         elif choice == 3:
-            third(7, 7)
+            print(third(7, 7))
 
         elif choice == 4:
-            fourth()
+            print(fourth())
 
         else:
             print("Такой задачи нет!")
